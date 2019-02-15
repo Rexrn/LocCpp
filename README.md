@@ -1,2 +1,2 @@
 # LocCpp
-A simple, easy to use localization library for C++.
+A simple, easy to use, header-only localization library for C++11.
