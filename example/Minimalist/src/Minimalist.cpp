@@ -1,8 +1,3 @@
-// Compile with:
-// g++ Minimalist.cpp  -o Minimalist -std=c++17 -I"../include"
-// Run with:
-// .\Minimalist
-
 #include <Rexrn/LocCpp/Everything.hpp>
 
 #include <cinttypes>
