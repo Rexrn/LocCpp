@@ -12,6 +12,10 @@
 namespace rexrn::loc
 {
 
+/// <summary>
+///		A builder of localized strings.
+/// 	Stores string templates and constants.
+/// </summary>
 template <std::uint16_t NumSupportedLanguages, typename CharType = char>
 class StringBuilder
 {
@@ -173,6 +177,11 @@ public:
 	/// </summary>
 	/// <param name="templateIndex_">Index of the template (Enum type)</param>
 	/// <param name="templateTranslations_">Array of template strings for each language</param>
+	/// <remarks>
+	/// 	Templates are stored inside vector and therefore their indices are paired 1-to-1 with vector indices.
+	/// 	Be careful not to use some big `templateIndex_` without a purpose. You should use next natural numbers.
+	/// 	Putting your templates inside Enum is very helpful and allows you to use names instead of meaningless numbers.
+	/// </remarks>
 	template <typename EnumType,
 		typename = std::enable_if_t< std::is_enum_v<EnumType> > >
 	void setTemplate(EnumType templateIndex_, std::array<StringType, NumSupportedLanguages> const & templateTranslations_)
@@ -189,6 +198,11 @@ public:
 	/// </summary>
 	/// <param name="templateIndex_">Index of the template</param>
 	/// <param name="templateTranslations_">Array of template strings for each language</param>
+	/// <remarks>
+	/// 	Templates are stored inside vector and therefore their indices are paired 1-to-1 with vector indices.
+	/// 	Be careful not to use some big `templateIndex_` without a purpose. You should use next natural numbers.
+	/// 	Putting your templates inside Enum is very helpful and allows you to use names instead of meaningless numbers.
+	/// </remarks>
 	void setTemplate(std::size_t templateIndex_, std::array<StringType, NumSupportedLanguages> const & templateTranslations_);
 
 	/// <summary>
