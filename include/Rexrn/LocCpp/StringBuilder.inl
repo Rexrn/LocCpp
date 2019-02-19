@@ -82,7 +82,7 @@ void StringBuilder<NumSupportedLanguages, CharType>::setTemplate(std::size_t tem
 				if (translation[chIndex] == ')')
 				{
 					// Store token name and its
-					char const* tokenNameStart	= translation.data() + tokenStart + 2;
+					CharType const* tokenNameStart	= translation.data() + tokenStart + 2;
 					std::size_t tokenLength		= chIndex - tokenStart;
 					std::size_t tokenNameLength = tokenLength - 2;
 					StringViewType tokenName( tokenNameStart, tokenNameLength );
