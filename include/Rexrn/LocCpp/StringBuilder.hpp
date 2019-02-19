@@ -63,6 +63,34 @@ public:
 	{
 		return this->build(lang_, templateIndex_, std::move(formatVariables_));
 	}
+
+	/// <summary>
+	///		Generates localized string in specified language, built from specified template.
+	/// </summary>
+	/// <param name="lang_">Language of the localized string (Enum type)</param>
+	/// <param name="templateIndex_">Index of the string template</param>
+	/// <param name="formatVariables_">Map (token name, value) used when substituting variable values for token names</param>
+	/// <returns>Generated string. Empty string if template does not exist.</returns>
+	template <typename LanguageType,
+		typename = std::enable_if_t< std::is_enum_v<LanguageType> > >
+	StringType operator()(LanguageType lang_, std::size_t templateIndex_, FormatVariables formatVariables_ = {}) const
+	{
+		return this->build(lang_, templateIndex_, std::move(formatVariables_));
+	}
+
+	/// <summary>
+	///		Generates localized string in specified language, built from specified template.
+	/// </summary>
+	/// <param name="lang_">Language of the localized string</param>
+	/// <param name="templateIndex_">Index of the string template (Enum type)</param>
+	/// <param name="formatVariables_">Map (token name, value) used when substituting variable values for token names</param>
+	/// <returns>Generated string. Empty string if template does not exist.</returns>
+	template <typename EnumType,
+		typename = std::enable_if_t< std::is_enum_v<EnumType> > >
+	StringType operator()(std::uint16_t lang_, EnumType templateIndex_, FormatVariables formatVariables_ = {}) const
+	{
+		return this->build(lang_, templateIndex_, std::move(formatVariables_));
+	}
 	
 	/// <summary>
 	///		Generates localized string in specified language, built from specified template.
@@ -89,6 +117,42 @@ public:
 	{
 		return this->build(
 				static_cast<std::uint16_t>(lang_),
+				static_cast<std::size_t>(templateIndex_),
+				std::move(formatVariables_)
+			);
+	}
+
+	/// <summary>
+	///		Generates localized string in specified language, built from specified template.
+	/// </summary>
+	/// <param name="lang_">Language of the localized string (Enum type)</param>
+	/// <param name="templateIndex_">Index of the string template</param>
+	/// <param name="formatVariables_">Map (token name, value) used when substituting variable values for token names</param>
+	/// <returns>Generated string. Empty string if template does not exist.</returns>
+	template <typename LanguageType,
+		typename = std::enable_if_t< std::is_enum_v<LanguageType> > >
+	StringType build(LanguageType lang_, std::size_t templateIndex_, FormatVariables formatVariables_ = {}) const
+	{
+		return this->build(
+				static_cast<std::uint16_t>(lang_),
+				templateIndex_,
+				std::move(formatVariables_)
+			);
+	}
+
+	/// <summary>
+	///		Generates localized string in specified language, built from specified template.
+	/// </summary>
+	/// <param name="lang_">Language of the localized string</param>
+	/// <param name="templateIndex_">Index of the string template (Enum type)</param>
+	/// <param name="formatVariables_">Map (token name, value) used when substituting variable values for token names</param>
+	/// <returns>Generated string. Empty string if template does not exist.</returns>
+	template <typename EnumType,
+		typename = std::enable_if_t< std::is_enum_v<EnumType> > >
+	StringType build(std::uint16_t lang_, EnumType templateIndex_, FormatVariables formatVariables_ = {}) const
+	{
+		return this->build(
+				lang_,
 				static_cast<std::size_t>(templateIndex_),
 				std::move(formatVariables_)
 			);
