@@ -83,8 +83,8 @@ void StringBuilder<NumSupportedLanguages, CharType>::setTemplate(std::size_t tem
 				{
 					// Store token name and its
 					CharType const* tokenNameStart	= translation.data() + tokenStart + 2;
-					std::size_t tokenLength		= chIndex - tokenStart;
-					std::size_t tokenNameLength = tokenLength - 2;
+					std::size_t tokenLength			= chIndex - tokenStart;
+					std::size_t tokenNameLength 	= tokenLength - 2;
 					StringViewType tokenName( tokenNameStart, tokenNameLength );
 
 					// Check if can do in-place constant replacement.
