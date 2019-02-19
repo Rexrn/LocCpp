@@ -167,6 +167,23 @@ public:
 	/// <returns>Generated string. Empty string if template does not exist.</returns>
 	StringType build(std::uint16_t lang_, std::size_t templateIndex_, FormatVariables formatVariables_ = {}) const;
 
+
+	/// <summary>
+	///		Assigns string template.
+	/// </summary>
+	/// <param name="templateIndex_">Index of the template (Enum type)</param>
+	/// <param name="templateTranslations_">Array of template strings for each language</param>
+	template <typename EnumType,
+		typename = std::enable_if_t< std::is_enum_v<EnumType> > >
+	void setTemplate(EnumType templateIndex_, std::array<StringType, NumSupportedLanguages> const & templateTranslations_)
+	{
+		this->setTemplate(
+				static_cast<std::size_t>(templateIndex_),
+				templateTranslations_
+			);
+	}
+
+
 	/// <summary>
 	///		Assigns string template.
 	/// </summary>

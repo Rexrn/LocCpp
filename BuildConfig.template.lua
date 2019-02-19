@@ -7,13 +7,14 @@
 
 userConfig = {
 	build = {
-		test = true
+		test 		= true,
+		examples 	= true
 	},
 
 	-- Dependencies configuration:
 	deps = {
 		-- [Required if building test]
-		-- Please provide path to the root of the Google Test root.
+		-- Please provide path to the root of the Google Test.
 		gtest = { root = "" }
 	}
 }

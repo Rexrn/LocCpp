@@ -68,4 +68,9 @@ workspace "Rexrn"
 		include ("test/Premake5Build.lua")
 	end
 
+	-- Build examples?
+	if userConfig.build.examples then
+		include ("example/Premake5Build.lua")
+	end
+
 	
